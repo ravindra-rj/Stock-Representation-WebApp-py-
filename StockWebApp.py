@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 from PIL import Image
-import sys
 import subprocess
 
 subprocess.call(['StockWebApp.py'], shell=True)
@@ -9,10 +8,10 @@ subprocess.call(['StockWebApp.py'], shell=True)
 # Add title and image
 st.write("""
 # Stock Market Web Application
-**Visually** show data on Stock,Data range from 8 May 2020 - 8 May 2021
+**Visually** show data on Stock,Data range from 8 May 2020 - 7 May 2021
 """)
 
-image = Image.open("./Asserts/StMaWebApp.jpg")
+image = Image.open("D:/python project/Stock-Representation-WebApp-py-/Asserts/StMaWebApp.jpg")
 st.image(image,use_column_width=True)
 
 # Create a sidebar header
@@ -21,10 +20,10 @@ st.sidebar.header('User Input')
 # function to get user input
 
 def get_input():
-    start_date=st.sidebar.text.input("Start Date","2020-05-08")
-    end_date = st.sidebar.text.input("End Date", "2021-05-08")
-    stock_symbol = st.sidebar.text.input("Stock Symbol", "AMZN")
-    return start_date,end_date,stock_symbol
+    start_date = st.sidebar.text_input("Start Date","2020-05-08")
+    end_date = st.sidebar.text_input("End Date", "2021-05-07")
+    stock_symbol = st.sidebar.text_input("Stock Symbol", "AMZN")
+    return start_date, end_date, stock_symbol
 
 # function for getting company name
 def get_company_name(symbol):
@@ -38,13 +37,13 @@ def get_company_name(symbol):
         'None'
 
 # fun for proper company name and proper date
-def get_data(symbol,start,end):
+def get_data(symbol, start, end):
     if symbol.upper()=='AMZN':
-        df= pd.read_csv("./Stocks/AMZN.csv")
+        df= pd.read_csv("D:/python project/Stock-Representation-WebApp-py-/Stocks/AMZN.csv")
     elif symbol.upper()=='TSLA':
-        df= pd.read_csv("./Stocks/TSLA.csv")
+        df= pd.read_csv("D:/python project/Stock-Representation-WebApp-py-/Stocks/TSLA.csv")
     elif symbol.upper()=='GOOG':
-        df= pd.read_csv("./Stocks/GOOG.csv")
+        df= pd.read_csv("D:/python project/Stock-Representation-WebApp-py-/Stocks/GOOG.csv")
     else:
         df= pd.DataFrame(columns=['Date','Open','High','Low','Close','Adj Close','Volume'])
 
@@ -74,7 +73,7 @@ def get_data(symbol,start,end):
     return  df.iloc[start_row: end_row +1,]
 
 
-start,end,symbol =get_input()
+start,end,symbol = get_input()
 
 df=get_data(symbol,start,end)
 
