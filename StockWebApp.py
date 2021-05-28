@@ -1,48 +1,44 @@
-import streamlit as st
+import streamlit as stt
 import pandas as pd
 from PIL import Image
 import subprocess
+import pandas_datareader as web
+import datetime
 
-subprocess.call(['StockWebApp.py'], shell=True)
+#subprocess.call(['StockWebApp.py'], shell=True)
 
 # Add title and image
-st.write("""
-# Stock Market Web Application
-**Visually** show data on Stock,Data range from 8 May 2020 - 7 May 2021
-""")
 
-image = Image.open("D:/python project/Stock-Representation-WebApp-py-/Asserts/StMaWebApp.jpg")
-st.image(image,use_column_width=True)
 
 # Create a sidebar header
-st.sidebar.header('User Input')
+stt.sidebar.header('User Input')
 
 # function to get user input
 
 def get_input():
-    start_date = st.sidebar.text_input("Start Date","2020-05-08")
-    end_date = st.sidebar.text_input("End Date", "2021-05-07")
-    stock_symbol = st.sidebar.text_input("Stock Symbol", "AMZN")
+    start_date = stt.sidebar.text_input("Start Date","2020-05-08")
+    end_date = stt.sidebar.text_input("End Date", "2021-05-07")
+    stock_symbol = stt.sidebar.text_input("Stock Symbol", "AMAZON")
     return start_date, end_date, stock_symbol
 
 # function for getting company name
 def get_company_name(symbol):
-    if symbol=="AMZN":
-        return "Amazon"
-    elif symbol=="TSLA":
-        return "Tesla"
-    elif symbol=="GOOG":
-        return "Alphabate"
+    if symbol=="AMAZON":
+        return "AMZN"
+    elif symbol=="TESLA":
+        return "TSLA"
+    elif symbol=="GOOGLE":
+        return "GOOG"
     else:
         'None'
 
 # fun for proper company name and proper date
 def get_data(symbol, start, end):
-    if symbol.upper()=='AMZN':
+    if symbol.upper()=='AMAZON':
         df= pd.read_csv("D:/python project/Stock-Representation-WebApp-py-/Stocks/AMZN.csv")
-    elif symbol.upper()=='TSLA':
+    elif symbol.upper()=='TESLA':
         df= pd.read_csv("D:/python project/Stock-Representation-WebApp-py-/Stocks/TSLA.csv")
-    elif symbol.upper()=='GOOG':
+    elif symbol.upper()=='GOOGLE':
         df= pd.read_csv("D:/python project/Stock-Representation-WebApp-py-/Stocks/GOOG.csv")
     else:
         df= pd.DataFrame(columns=['Date','Open','High','Low','Close','Adj Close','Volume'])
@@ -63,7 +59,7 @@ def get_data(symbol, start, end):
 
     # End date (user data)
     for j in  range(0,len(df)):
-        if end<= pd.to_datetime(df['Date'][len(df)-1-j]):
+        if end >= pd.to_datetime(df['Date'][len(df)-1-j]):
             end_row= len(df)-1-j
             break
 
@@ -72,18 +68,30 @@ def get_data(symbol, start, end):
 
     return  df.iloc[start_row: end_row +1,]
 
+def startup():
 
-start,end,symbol = get_input()
+    # Create a sidebar header
+    stt.sidebar.header('User Input')
+    start,end,symbol = get_input()
 
-df=get_data(symbol,start,end)
+    end_date = datetime.datetime.today()
+    start_date = datetime.date(end_date.year-20,1,1)
 
-company_name=get_company_name(symbol.upper())
+    symbol1=get_company_name(symbol)
+    uf = web.DataReader(symbol1, 'yahoo', start_date, end_date)
 
-st.header(company_name+" Close Price\n")
-st.line_chart(df['Close'])
+    path_out = 'D:/python project/Stock-Representation-WebApp-py-/Stocks/'
+    uf.to_csv(path_out +symbol1+'.csv')
 
-st.header(company_name+" Volume\n")
-st.line_chart(df['Volume'])
+    df=get_data(symbol,start,end)
 
-st.header('Data Statistics')
-st.write(df.describe())
+    company_name=get_company_name(symbol.upper())
+
+    stt.header(symbol.upper()+" Close Price\n")
+    stt.line_chart(df['Close'])
+
+    stt.header(symbol.upper()+" Volume\n")
+    stt.line_chart(df['Volume'])
+
+    stt.header('Data Statistics')
+    stt.write(df.describe())
