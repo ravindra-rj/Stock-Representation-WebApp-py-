@@ -4,9 +4,9 @@
     <list default="true" id="bdd44ee3-b7ab-4339-93c6-a3c0eb4de5bf" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StockWebApp.py" beforeDir="false" afterPath="$PROJECT_DIR$/StockWebApp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stocks/AMZN.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stocks/GOOG.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stocks/TSLA.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stocks/AMZN.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Stocks/AMZN.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stocks/GOOG.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Stocks/GOOG.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stocks/TSLA.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Stocks/TSLA.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
