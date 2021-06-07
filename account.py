@@ -37,15 +37,6 @@ def login_user(username,password):
 	data = c.fetchall()
 	return data
 
-
-def view_all_users():
-	c.execute('SELECT * FROM useraccount')
-	data = c.fetchall()
-	return data
-
-
-
-
 st.title("Welcome to Stocks-Web App")
 image = Image.open("D:/python project/Stock-Representation-WebApp-py-/Asserts/StMaWebApp.jpg")
 st.image(image,)
@@ -78,7 +69,7 @@ elif choice == "SignUp":
 	new_password = st.text_input("Password",type='password')
 
 	if st.button("Signup"):
-		if len(new_password)>0 and len(new_password)>0:
+		if len(new_user)>0 and len(new_password)>0:
 			add_userdata(new_user,make_hashes(new_password))
 		else:
 			st.error("UserName or Password is required!")

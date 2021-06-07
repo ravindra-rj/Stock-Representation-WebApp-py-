@@ -5,7 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/StockWebApp.py" beforeDir="false" afterPath="$PROJECT_DIR$/StockWebApp.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Stocks/AMZN.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Stocks/AMZN.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stocks/BABA.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Stocks/BABA.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Stocks/BTC-CAD.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Stocks/BTC-CAD.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stocks/SNDL.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Stocks/SNDL.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stocks/TSLA.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Stocks/TSLA.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/account.py" beforeDir="false" afterPath="$PROJECT_DIR$/account.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
